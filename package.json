@@ -1,0 +1,19 @@
+{
+  "name": "localnote-qvac",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A private AI scratchpad powered by local QVAC inference.",
+  "scripts": {
+    "start": "QVAC_CONFIG_PATH=./qvac.config.json node src/server.js",
+    "dev": "QVAC_CONFIG_PATH=./qvac.config.json node --watch src/server.js",
+    "verify": "node --test"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@qvac/inference": "0.19.1",
+    "@qvac/sdk": "0.19.1"
+  }
+}
