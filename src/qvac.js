@@ -71,8 +71,11 @@ export class LocalInference {
         modelId,
         history,
         stream: true,
-        maxTokens: 400,
-        temperature: 0.2
+        generationParams: {
+          predict: 400,
+          temp: 0.2,
+          repeat_penalty: 1.1
+        }
       })
 
       let text = ''

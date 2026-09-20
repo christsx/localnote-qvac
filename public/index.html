@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A private AI scratchpad powered by local QVAC inference." />
+    <title>LocalNote — Private AI scratchpad</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="LocalNote home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M7.5 4.5h7l3 3v12h-11v-15Z"/><path d="M14.5 4.5v3h3M9.5 11h5M9.5 14h5M9.5 17h3"/></svg>
+          </span>
+          <span>LocalNote</span>
+        </a>
+        <div class="local-badge" id="local-badge">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Local</span>
+        </div>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">Private workspace</p>
+        <h1 id="page-title">Think clearly. Keep it local.</h1>
+        <p class="subtitle">Turn rough notes into something useful without sending them anywhere.</p>
+      </section>
+
+      <section class="workspace" aria-label="LocalNote workspace">
+        <div class="panel input-panel">
+          <div class="panel-header">
+            <label for="note">Your note</label>
+            <span id="character-count">0 characters</span>
+          </div>
+          <textarea id="note" maxlength="30000" spellcheck="true" placeholder="Paste meeting notes, ideas, or messy thoughts...">We finished the new homepage today. Jason needs to test checkout tomorrow morning. Sarah will update the documentation before Friday. We want to launch Friday afternoon if checkout passes.</textarea>
+          <div class="actions" role="group" aria-label="Note actions">
+            <button type="button" data-operation="summarize">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 5.5h12M4 10h8M4 14.5h10"/></svg>
+              Summarize
+            </button>
+            <button type="button" data-operation="cleanup">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m4 15 8.8-8.8 1 1L5 16H4v-1ZM11.8 7.2l1-1 1 1-1 1M14.5 4v2M13.5 5h2"/></svg>
+              Clean up
+            </button>
+            <button type="button" data-operation="actions">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m3.5 5.5 1 1 2-2M8.5 5.5h8M3.5 10 4.5 11l2-2M8.5 10h8M3.5 14.5l1 1 2-2M8.5 14.5h8"/></svg>
+              Action items
+            </button>
+          </div>
+        </div>
+
+        <div class="panel output-panel" id="output-panel">
+          <div class="panel-header output-header">
+            <div>
+              <span class="output-kicker">AI output</span>
+              <h2 id="output-title">Ready when you are</h2>
+            </div>
+            <button class="copy-button" id="copy-button" type="button" hidden>Copy</button>
+          </div>
+          <div class="output-content empty" id="output" aria-live="polite">
+            <div class="empty-state">
+              <span class="spark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 3c.6 5.2 3.8 8.4 9 9-5.2.6-8.4 3.8-9 9-.6-5.2-3.8-8.4-9-9 5.2-.6 8.4-3.8 9-9Z"/></svg>
+              </span>
+              <p>Your result will appear here as it’s generated.</p>
+            </div>
+          </div>
+          <div class="stats" id="stats" hidden></div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="model-status" id="model-status" role="status">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span id="status-label">Preparing local model</span>
+          <span class="progress-track" id="progress-track" hidden><span id="progress-bar"></span></span>
+        </div>
+        <p>Runs locally with <strong>QVAC</strong>. Your notes are not sent to a cloud AI provider.</p>
+      </footer>
+    </main>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
