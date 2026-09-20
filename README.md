@@ -6,7 +6,7 @@ LocalNote is a small, private AI scratchpad that summarizes, cleans up, and extr
 
 ![LocalNote demo](docs/demo.png)
 
-The repository is prepared for a final screenshot at `docs/demo.png`. To capture it, start the app, wait for **Model ready**, use the sample note already in the editor, click **Action items**, and save a screenshot showing the complete workspace to that path. The generated response must be real QVAC output; no output is hard-coded.
+The screenshot at `docs/demo.png` shows real QVAC output from the running app. To reproduce it, start the app, wait for **Model ready**, use the sample note already in the editor, and click **Action items**. No output is hard-coded.
 
 ## What it does
 
@@ -37,7 +37,7 @@ Model: `LLAMA_3_2_1B_INST_Q4_0` — Llama 3.2 1B Instruct, Q4_0 quantization, fr
 - Node.js 22.17 or newer
 - npm 10.9 or newer
 - A supported QVAC desktop host
-- Approximately 1 GB of free disk space for dependencies and the 773 MB model asset
+- At least 7 GB of free disk space recommended: installed dependencies occupied about 5 GB on the tested Mac, plus the 773 MB model asset
 - Enough memory to load the model
 
 See the [official QVAC system requirements](https://docs.qvac.tether.io/system-requirements/) for current operating-system, GPU-driver, and runtime details.
@@ -45,7 +45,7 @@ See the [official QVAC system requirements](https://docs.qvac.tether.io/system-r
 ## Installation
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/localnote-qvac.git
+git clone https://github.com/christsx/localnote-qvac.git
 cd localnote-qvac
 npm install
 ```
@@ -83,6 +83,8 @@ The dependency-free Node server binds to `127.0.0.1`, serves the static interfac
 ## Privacy
 
 User note content stays between the local browser, the loopback-only Node server, and the locally running QVAC model. LocalNote includes no telemetry, analytics, authentication, or cloud inference. Network access is needed only when QVAC acquires the model asset for the first time (or when dependencies are installed).
+
+The included diagnostic configuration enables QVAC console logging, which can print note content to your local terminal. Set `loggerConsoleOutput` to `false` in `qvac.config.json` before using sensitive notes. AI output can contain mistakes; review it before use.
 
 ## Project structure
 
