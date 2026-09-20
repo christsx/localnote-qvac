@@ -10,7 +10,7 @@
     "verify": "node --test"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=22.17"
   },
   "dependencies": {
     "@qvac/inference": "0.19.1",
